@@ -4,6 +4,7 @@ import { SharedModule } from '@src/app/shared/shared.module';
 import { DialogRef } from '@shared/dialog/dialog-ref';
 import { MetaInfoComponent } from './meta-info.component';
 import { TranslationSetupModule } from '@src/app/app-translation-setup.module';
+import { HavButtonModule } from 'hav-components';
 
 class MockDialogRef {
   close = () => {};
@@ -19,7 +20,7 @@ describe('MetaInfoComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [MetaInfoComponent],
-      imports: [SharedModule, TranslationSetupModule],
+      imports: [SharedModule, TranslationSetupModule, HavButtonModule],
       providers: [
         {
           provide: DialogRef,

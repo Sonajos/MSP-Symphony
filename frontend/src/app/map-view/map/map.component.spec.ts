@@ -15,8 +15,10 @@ import { initialState as metadata } from '@data/metadata/metadata.reducers';
 import { initialState as area } from '@data/area/area.reducers';
 import { initialState as user } from '@data/user/user.reducers';
 import { initialState as scenario } from '@data/scenario/scenario.reducers';
+import { initialState as calculation } from '@data/calculation/calculation.reducers';
 import { ChangeState, ScenarioLayer } from '@src/app/map-view/map/layers/scenario-layer';
 import { BandChange } from '@data/metadata/metadata.interfaces';
+import { HavButtonModule } from 'hav-components';
 
 function setUp() {
   const fixture: ComponentFixture<MapComponent> = TestBed.createComponent(MapComponent);
@@ -27,7 +29,7 @@ function setUp() {
 describe('MapComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [SharedModule, CoreModule, TranslationSetupModule],
+      imports: [SharedModule, HavButtonModule, CoreModule, TranslationSetupModule],
       declarations: [
         MapComponent,
         MapToolbarComponent,
@@ -41,7 +43,8 @@ describe('MapComponent', () => {
             metadata,
             area,
             user,
-            scenario
+            scenario,
+            calculation
           }
         })
       ]

@@ -10,6 +10,11 @@ import {
 import { IconButtonComponent } from '../../../shared/icon-button/icon-button.component';
 import { IconComponent } from '../../../shared/icon/icon.component';
 import { provideMockStore } from '@ngrx/store/testing';
+import { initialState as metadata } from '@data/metadata/metadata.reducers';
+import { initialState as area } from '@data/area/area.reducers';
+import { initialState as user } from '@data/user/user.reducers';
+import { initialState as scenario } from '@data/scenario/scenario.reducers';
+import { initialState as calculation } from '@data/calculation/calculation.reducers';
 
 function setUp() {
   const fixture: ComponentFixture<CheckboxAccordionComponent> = TestBed.createComponent(
@@ -31,7 +36,17 @@ describe('CheckboxAccordionComponent', () => {
         IconComponent
       ],
       imports: [HavCheckboxModule, HavCoreModule],
-      providers: [provideMockStore()]
+      providers: [
+        provideMockStore({
+          initialState: {
+            metadata,
+            area,
+            user,
+            scenario,
+            calculation
+          }
+        })
+      ]
     }).compileComponents();
   }));
 

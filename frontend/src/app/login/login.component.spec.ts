@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-
+import { initialState as metadata } from '@data/metadata/metadata.reducers';
+import { initialState as area } from '@data/area/area.reducers';
+import { initialState as user } from '@data/user/user.reducers';
+import { initialState as scenario } from '@data/scenario/scenario.reducers';
+import { initialState as calculation } from '@data/calculation/calculation.reducers';
 import { LoginComponent } from './login.component';
 import { HavFormFieldModule, HavButtonModule } from 'hav-components';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -26,7 +30,17 @@ describe('LoginComponent', () => {
         RouterTestingModule
       ],
       declarations: [LoginComponent],
-      providers: [provideMockStore()]
+      providers: [
+        provideMockStore({
+          initialState: {
+            metadata,
+            area,
+            user,
+            scenario,
+            calculation
+          }
+        })
+      ]
     }).compileComponents();
   }));
 

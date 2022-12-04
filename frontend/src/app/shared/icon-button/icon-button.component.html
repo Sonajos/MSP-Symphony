@@ -6,8 +6,8 @@
   (keyup.enter)="!disabled && onEnterKeyUp($event)"
   ngClass="{{ disabled ? 'disabled' : '' }}"
   havFocusOutline
-  [addFocusOutlineOnTabKeyboardEvent]="true"
   [attr.aria-label]="label"
 >
+  <!-- [addFocusOutlineOnTabKeyboardEvent]="true" -->
   <app-icon [iconType]="icon"></app-icon>
 </button>

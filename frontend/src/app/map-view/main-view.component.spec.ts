@@ -21,7 +21,11 @@ import { AreaSelectionComponent } from './area-selection/area-selection.componen
 import { BandSelectionComponent } from './band-selection/band-selection.component';
 import { SelectionLayoutComponent } from './selection-layout/selection-layout.component';
 import { initialState as metadata } from '@data/metadata/metadata.reducers';
-import { ScenarioEditorComponent } from "@src/app/map-view/scenario/scenario-editor.component";
+import { initialState as area } from '@data/area/area.reducers';
+import { initialState as user } from '@data/user/user.reducers';
+import { initialState as scenario } from '@data/scenario/scenario.reducers';
+import { initialState as calculation } from '@data/calculation/calculation.reducers';
+import { ScenarioEditorComponent } from '@src/app/map-view/scenario/scenario-editor.component';
 
 function setUp() {
   const fixture: ComponentFixture<MainViewComponent> = TestBed.createComponent(MainViewComponent);
@@ -56,11 +60,17 @@ describe('MapViewComponent', () => {
         BandSelectionComponent,
         SelectionLayoutComponent
       ],
-      providers: [provideMockStore({
-        initialState: {
-          metadata
-        }
-      })]
+      providers: [
+        provideMockStore({
+          initialState: {
+            metadata,
+            area,
+            user,
+            scenario,
+            calculation
+          }
+        })
+      ]
     }).compileComponents();
   }));
 

@@ -1,4 +1,8 @@
-import { initialState as area } from './../../data/area/area.reducers';
+import { initialState as metadata } from '@data/metadata/metadata.reducers';
+import { initialState as area } from '@data/area/area.reducers';
+import { initialState as user } from '@data/user/user.reducers';
+import { initialState as scenario } from '@data/scenario/scenario.reducers';
+import { initialState as calculation } from '@data/calculation/calculation.reducers';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AreaSelectionComponent } from './area-selection.component';
@@ -22,7 +26,17 @@ describe('AreaSelectionComponent', () => {
     TestBed.configureTestingModule({
       declarations: [AreaSelectionComponent, SelectionLayoutComponent, AreaGroupComponent],
       imports: [SharedModule, HavCheckboxModule, TranslationSetupModule],
-      providers: [provideMockStore({ initialState: { area } })]
+      providers: [
+        provideMockStore({
+          initialState: {
+            metadata,
+            area,
+            user,
+            scenario,
+            calculation
+          }
+        })
+      ]
     }).compileComponents();
   }));
 

@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-
+import { initialState as metadata } from '@data/metadata/metadata.reducers';
+import { initialState as area } from '@data/area/area.reducers';
+import { initialState as user } from '@data/user/user.reducers';
+import { initialState as scenario } from '@data/scenario/scenario.reducers';
+import { initialState as calculation } from '@data/calculation/calculation.reducers';
 import { HeaderComponent } from './header.component';
 import { SharedModule } from '@src/app/shared/shared.module';
 import { UserMenuToggleComponent } from './user-menu-toggle/user-menu-toggle.component';
@@ -16,13 +20,23 @@ describe('HeaderComponent', () => {
     TestBed.configureTestingModule({
       imports: [SharedModule],
       declarations: [HeaderComponent, UserMenuToggleComponent],
-      providers: [provideMockStore()]
+      providers: [
+        provideMockStore({
+          initialState: {
+            metadata,
+            area,
+            user,
+            scenario,
+            calculation
+          }
+        })
+      ]
     }).compileComponents();
   }));
 
   it('should create', () => {
     const { component } = setUp();
-    component.title = 'Symphony'
+    component.title = 'Symphony';
     expect(component).toBeTruthy();
   });
 });

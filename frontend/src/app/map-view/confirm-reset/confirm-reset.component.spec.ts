@@ -1,10 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-import { DialogConfig } from '@src/app/shared/dialog/dialog-config';
 import { SharedModule } from '@src/app/shared/shared.module';
 import { DialogRef } from '@shared/dialog/dialog-ref';
 import { ConfirmResetComponent } from './confirm-reset.component';
 import { TranslationSetupModule } from '@src/app/app-translation-setup.module';
+import { initialState as metadata } from '@data/metadata/metadata.reducers';
+import { initialState as area } from '@data/area/area.reducers';
+import { initialState as user } from '@data/user/user.reducers';
+import { initialState as scenario } from '@data/scenario/scenario.reducers';
+import { initialState as calculation } from '@data/calculation/calculation.reducers';
+import { HavButtonModule } from 'hav-components';
 
 class MockDialogRef {
   close = () => {};
@@ -21,13 +26,21 @@ function setUp() {
 describe('ConfirmResetComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [SharedModule, TranslationSetupModule],
+      imports: [SharedModule, HavButtonModule, TranslationSetupModule],
       providers: [
         {
           provide: DialogRef,
           useValue: MockDialogRef
         },
-        provideMockStore()
+        provideMockStore({
+          initialState: {
+            metadata,
+            area,
+            user,
+            scenario,
+            calculation
+          }
+        })
       ],
       declarations: [ConfirmResetComponent]
     }).compileComponents();

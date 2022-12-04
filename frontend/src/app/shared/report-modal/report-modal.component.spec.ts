@@ -9,10 +9,16 @@ import { DialogConfig } from '../dialog/dialog-config';
 import { HttpClientModule } from '@angular/common/http';
 import { provideMockStore } from '@ngrx/store/testing';
 import { initialState as metadata } from '@data/metadata/metadata.reducers';
+import { initialState as area } from '@data/area/area.reducers';
+import { initialState as user } from '@data/user/user.reducers';
+import { initialState as scenario } from '@data/scenario/scenario.reducers';
+import { initialState as calculation } from '@data/calculation/calculation.reducers';
 import { TranslationSetupModule } from '@src/app/app-translation-setup.module';
 
 function setUp() {
-  const fixture: ComponentFixture<CalculationReportModalComponent> = TestBed.createComponent(CalculationReportModalComponent);
+  const fixture: ComponentFixture<CalculationReportModalComponent> = TestBed.createComponent(
+    CalculationReportModalComponent
+  );
   const component: CalculationReportModalComponent = fixture.componentInstance;
   return { component, fixture };
 }
@@ -37,7 +43,11 @@ describe('CalculationReportModalComponent', () => {
         },
         provideMockStore({
           initialState: {
-            metadata
+            metadata,
+            area,
+            user,
+            scenario,
+            calculation
           }
         })
       ]
