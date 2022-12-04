@@ -27,7 +27,7 @@ export const selectSelectedArea = createSelector(
 export const selectSelectedAreaData = createSelector(
   selectAreaState,
   selectSelectedArea,
-  (area: State, selectedArea) => selectedArea ? getIn(area, selectedArea, undefined) : undefined
+  (area: State, selectedArea) => (selectedArea ? getIn(area, selectedArea, undefined) : undefined)
 );
 
 export const selectSelectedAreaDataAndBaseline = createSelector(

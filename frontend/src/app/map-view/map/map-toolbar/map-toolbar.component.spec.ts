@@ -38,7 +38,7 @@ describe('MapToolbarComponent', () => {
   it('should trigger toggleDraw on button click', async(() => {
     const { component, fixture } = setUp();
     spyOn(component, 'onToggleDraw');
-    const button = fixture.debugElement.children[1].nativeElement;
+    const button = fixture.debugElement.children[2].nativeElement;
     button.click();
     fixture.whenStable().then(() => {
       expect(component.onToggleDraw).toHaveBeenCalledTimes(1);

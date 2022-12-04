@@ -1,12 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutDialogComponent } from './about-dialog.component';
-import { DialogRef } from "@shared/dialog/dialog-ref";
-import { TranslateService } from "@ngx-translate/core";
-import { TranslationSetupModule } from "@src/app/app-translation-setup.module";
+import { DialogRef } from '@shared/dialog/dialog-ref';
+import { TranslationSetupModule } from '@src/app/app-translation-setup.module';
 
 class MockDialogRef {
-  close = () => {}
+  close = () => {};
 }
 
 describe('AboutDialogComponentComponent', () => {
@@ -16,12 +15,9 @@ describe('AboutDialogComponentComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [TranslationSetupModule],
-      declarations: [ AboutDialogComponent ],
-      providers: [
-        { provide: DialogRef, useClass: MockDialogRef }
-      ]
-    })
-    .compileComponents();
+      declarations: [AboutDialogComponent],
+      providers: [{ provide: DialogRef, useClass: MockDialogRef }]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

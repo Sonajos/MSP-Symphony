@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslationSetupModule } from '@src/app/app-translation-setup.module';
+import { SharedModule } from '@src/app/shared/shared.module';
 
 import { FooterComponent } from './footer.component';
 
@@ -11,6 +13,7 @@ function setUp() {
 describe('FooterComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [SharedModule, TranslationSetupModule],
       declarations: [FooterComponent]
     }).compileComponents();
   }));

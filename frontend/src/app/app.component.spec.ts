@@ -9,12 +9,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        SharedModule,
-        RouterTestingModule,
-        CoreModule,
-        TranslationSetupModule
-      ],
+      imports: [SharedModule, RouterTestingModule, CoreModule, TranslationSetupModule],
       declarations: [AppComponent],
       providers: [provideMockStore()]
     }).compileComponents();

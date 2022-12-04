@@ -5,13 +5,18 @@ import { MapComponent } from './map.component';
 import { MapToolbarComponent } from './map-toolbar/map-toolbar.component';
 import { MapOpacitySliderComponent } from './map-opacity-slider/map-opacity-slider.component';
 import { CoreModule } from '@src/app/core/core.module';
-import { ToolbarButtonComponent, ToolbarZoomButtonsComponent } from './toolbar-button/toolbar-button.component';
+import {
+  ToolbarButtonComponent,
+  ToolbarZoomButtonsComponent
+} from './toolbar-button/toolbar-button.component';
 import { SharedModule } from '@src/app/shared/shared.module';
 import { TranslationSetupModule } from '@src/app/app-translation-setup.module';
 import { initialState as metadata } from '@data/metadata/metadata.reducers';
 import { initialState as area } from '@data/area/area.reducers';
-import { ChangeState, ScenarioLayer } from "@src/app/map-view/map/layers/scenario-layer";
-import { BandChange } from "@data/metadata/metadata.interfaces";
+import { initialState as user } from '@data/user/user.reducers';
+import { initialState as scenario } from '@data/scenario/scenario.reducers';
+import { ChangeState, ScenarioLayer } from '@src/app/map-view/map/layers/scenario-layer';
+import { BandChange } from '@data/metadata/metadata.interfaces';
 
 function setUp() {
   const fixture: ComponentFixture<MapComponent> = TestBed.createComponent(MapComponent);
@@ -22,11 +27,7 @@ function setUp() {
 describe('MapComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        SharedModule,
-        CoreModule,
-        TranslationSetupModule
-      ],
+      imports: [SharedModule, CoreModule, TranslationSetupModule],
       declarations: [
         MapComponent,
         MapToolbarComponent,
@@ -34,12 +35,16 @@ describe('MapComponent', () => {
         ToolbarZoomButtonsComponent,
         ToolbarButtonComponent
       ],
-      providers: [provideMockStore({
-        initialState: {
-          metadata,
-          area
-        }
-      })]
+      providers: [
+        provideMockStore({
+          initialState: {
+            metadata,
+            area,
+            user,
+            scenario
+          }
+        })
+      ]
     }).compileComponents();
   }));
 
@@ -49,7 +54,11 @@ describe('MapComponent', () => {
   });
 
   it('classifyBandChanges should classify correctly', () => {
-    expect(ScenarioLayer.classifyBandChanges([{ multiplier: 1.2 } as BandChange])).toBe(ChangeState.Red);
-    expect(ScenarioLayer.classifyBandChanges([{ multiplier: 1.2 } as BandChange])).toBe(ChangeState.Green);
-  })
+    expect(ScenarioLayer.classifyBandChanges([{ multiplier: 1.2 } as BandChange])).toBe(
+      ChangeState.Red
+    );
+    expect(ScenarioLayer.classifyBandChanges([{ multiplier: 0.8 } as BandChange])).toBe(
+      ChangeState.Green
+    );
+  });
 });

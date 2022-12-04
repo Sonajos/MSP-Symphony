@@ -12,7 +12,7 @@ export const selectIsLoggedIn = createSelector(
 export const selectIsLoading = createSelector(
   selectUserState,
   (state: State): boolean => state.loading
-)
+);
 
 export const selectUser = createSelector(
   selectUserState,
@@ -31,5 +31,5 @@ export const selectLoginError = createSelector(
 
 export const selectBaseline = createSelector(
   selectUserState,
-  (state: State) => state.baseline
+  (state: State) => state?.baseline
 );

@@ -1,3 +1,4 @@
+import { initialState as area } from './../../data/area/area.reducers';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AreaSelectionComponent } from './area-selection.component';
@@ -9,7 +10,9 @@ import { SelectionLayoutComponent } from '../selection-layout/selection-layout.c
 import { AreaGroupComponent } from './area-group/area-group.component';
 
 function setUp() {
-  const fixture: ComponentFixture<AreaSelectionComponent> = TestBed.createComponent(AreaSelectionComponent);
+  const fixture: ComponentFixture<AreaSelectionComponent> = TestBed.createComponent(
+    AreaSelectionComponent
+  );
   const component: AreaSelectionComponent = fixture.componentInstance;
   return { component, fixture };
 }
@@ -19,7 +22,7 @@ describe('AreaSelectionComponent', () => {
     TestBed.configureTestingModule({
       declarations: [AreaSelectionComponent, SelectionLayoutComponent, AreaGroupComponent],
       imports: [SharedModule, HavCheckboxModule, TranslationSetupModule],
-      providers: [provideMockStore()]
+      providers: [provideMockStore({ initialState: { area } })]
     }).compileComponents();
   }));
 

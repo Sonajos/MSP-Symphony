@@ -1,5 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideMockStore } from '@ngrx/store/testing';
+import { TranslationSetupModule } from '@src/app/app-translation-setup.module';
 import { ScenarioListComponent } from './scenario-list.component';
 
 describe('ScenarioListComponent', () => {
@@ -8,9 +10,10 @@ describe('ScenarioListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ScenarioListComponent ]
-    })
-    .compileComponents();
+      imports: [HttpClientModule, TranslationSetupModule],
+      declarations: [ScenarioListComponent],
+      providers: [provideMockStore()]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

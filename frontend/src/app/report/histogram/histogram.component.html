@@ -1,7 +1,9 @@
 <h4>{{ title }}</h4>
 <app-histogram-chart
+  *ngIf="report"
   [bins]="report.histogram"
   [reportMax]="report.max"
   [algorithm]="report.operationName"
-  [locale]="locale">
+  [locale]="locale"
+>
 </app-histogram-chart>

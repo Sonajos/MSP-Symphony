@@ -17,7 +17,7 @@ export class MetaInfoComponent {
   public category: string;
   public title: string;
 
-  constructor(private dialog: DialogRef, private config: DialogConfig) {
+  constructor(private dialog: DialogRef, config: DialogConfig) {
     this.band = config.data.band;
     this.bandMetadata = new Map<string, string> ([
       ['method-summary',     this.band.methodSummary],
@@ -26,6 +26,7 @@ export class MetaInfoComponent {
       ['data-processing',    this.band.dataProcessing]
     ]);
     this.bandMetadataSources = this.band.dataSources?.split(';') || [];
+
     this.category = this.band.statePath[0] === 'ecoComponent' ? 'ecosystem' : 'pressure';
     this.title = this.band.title;
   }

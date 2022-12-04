@@ -9,9 +9,12 @@ import {
 } from '../../../shared/accordion-box/accordion-box.component';
 import { IconButtonComponent } from '../../../shared/icon-button/icon-button.component';
 import { IconComponent } from '../../../shared/icon/icon.component';
+import { provideMockStore } from '@ngrx/store/testing';
 
 function setUp() {
-  const fixture: ComponentFixture<CheckboxAccordionComponent> = TestBed.createComponent(CheckboxAccordionComponent);
+  const fixture: ComponentFixture<CheckboxAccordionComponent> = TestBed.createComponent(
+    CheckboxAccordionComponent
+  );
   const component: CheckboxAccordionComponent = fixture.componentInstance;
   return { component, fixture };
 }
@@ -27,7 +30,8 @@ describe('CheckboxAccordionComponent', () => {
         IconButtonComponent,
         IconComponent
       ],
-      imports: [HavCheckboxModule, HavCoreModule]
+      imports: [HavCheckboxModule, HavCoreModule],
+      providers: [provideMockStore()]
     }).compileComponents();
   }));
 

@@ -1,3 +1,4 @@
+import { DecimalPipe } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HistogramChartComponent } from './histogram-chart.component';
@@ -8,9 +9,9 @@ describe('HistogramChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HistogramChartComponent ]
-    })
-    .compileComponents();
+      declarations: [HistogramChartComponent],
+      providers: [DecimalPipe]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
